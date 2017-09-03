@@ -8,7 +8,9 @@ import { Provider }               from 'react-redux';
 import { BrowserRouter, Route }   from 'react-router-dom';
 import { initializeStore }        from './store';
 import { Container }              from 'semantic-ui-react';
-import NavBar                     from './components/NavBar';
+import Navbar                     from './components/common/Navbar';
+import Footer                     from './components/common/Footer';
+import Fork                       from './components/common/Fork';
 import Home                       from './components/Home';
 import Post                       from './components/Post';
 import './App.css';
@@ -22,10 +24,12 @@ class App extends Component {
         <BrowserRouter>
           <div className='app'>
             <Container>
-              <NavBar />
+              <Navbar />
               <Route exact path='/' component={Home} />
               <Route exact path='/:category' component={Home} />
               <Route path='/:category/:postId' component={Post} />
+              <Footer />
+              <Fork />
             </Container>
           </div>
         </BrowserRouter>
