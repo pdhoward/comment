@@ -78,69 +78,20 @@ class Post extends Component {
     const showDeleteConfirmation = id === this.props.delete.id;
 
     return (
-      <Dimmer.Dimmable as={Card} fluid blurring dimmed={showDeleteConfirmation}>
-        <Dimmer active={showDeleteConfirmation}>
-          {this.renderDeleteConfirmation()}
-        </Dimmer>
-        <div style={{ position: 'absolute', right: '13px', top: '2px' }}>
-          <Label size='mini' ribbon='right'>{_.upperFirst(category)}</Label>
-        </div>
-        <Card.Content>
-          <Image floated='left' size='mini' src={thumb} />
-          <Card.Header>
-            {
-              isDetailView
-              ? title
-              : <Link to={`/${category}/${id}`}>{title}</Link>
-            }
-          </Card.Header>
-          <Card.Meta>
-            <span><b>{author}</b> {moment(timestamp).fromNow()}</span>
-            <Icon name='trophy' />
-            <span>{voteScore}</span>
-            <VoteBox id={id} type={'post'} />
-            <Popup
-              trigger={
-                <a onClick={this.handleEdit}>
-                  <Icon name='edit' />
-                </a>
-              }
-              size='mini' inverted
-              position='bottom center'
-              content='Edit Post'
-            />
-            <Popup
-              trigger={
-                <a onClick={this.handleDeleteIntent}>
-                  <Icon name='trash outline' />
-                </a>
-              }
-              size='mini' inverted
-              position='bottom center'
-              content='Delete Post'
-            />
-          </Card.Meta>
-          <Card.Description>{body}</Card.Description>
-        </Card.Content>
-        <Card.Content extra style={{ paddingTop: 0, paddingBottom: 0 }}>
-          <div style={{ minHeight: '34px' }}>
-            <CommentList postId={id} startOpen={isDetailView} />
-          </div>
-        </Card.Content>
-      </Dimmer.Dimmable>
-    );
-  }
+
+      <CommentList postId={id} startOpen={isDetailView} />
+
+      );
+    }
 
   render() {
     const { post } = this.props;
     const { loading, error } = post || {};
-    console.log("ENTERED POSTJS")
-    console.log(this.props.post)
 
-  return this.renderPost();
+    return this.renderPost();
 
   };
-
+}
 Post.propTypes = {
   id: PropTypes.string.isRequired,
   post: PropTypes.object,
