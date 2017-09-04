@@ -4,7 +4,6 @@ import PropTypes                  from 'prop-types';
 import _                          from 'lodash';
 import { Grid, Loader, Segment, Icon } from 'semantic-ui-react';
 import Post                       from './Post';
-import Panel                      from "./common/Panel";
 
 class PostList extends Component {
   renderLoading() {
@@ -45,46 +44,9 @@ class PostList extends Component {
     return <Grid columns={1}>{postComponents}</Grid>;
   }
 
-  renderQuotes() {
-    const { posts } = this.props;
-    console.log("ENTERED POSTLIST")
-    console.log(this.props)
-    console.log("and here are the magic posts")
-    console.log(posts)
-
-    const postComponents = posts.map(post => {
-      return (
-        <Post id={post.id} />
-      );
-    });
-    console.log("and here are postcomponents")
-    console.log(postComponents)
-    return
-      <Panel
-        quote={postComponents}
-      />
-
-
-    /*
-    <Post id={this.props.quote.id} />
-    const postComponents = posts.map(post => {
-      return (
-        <Grid.Row key={post.id}>
-          <Grid.Column>
-            <Post id={post.id} />
-          </Grid.Column>
-        </Grid.Row>
-      );
-    });
-    return <Grid columns={1}>{postComponents}</Grid>;
-    */
-  }
-
 
   render() {
     const { loading, error, posts } = this.props;
-
-
 
     if (loading) {
       return this.renderLoading();
@@ -93,9 +55,8 @@ class PostList extends Component {
     } else if (_.isEmpty(posts)) {
       return this.renderNoResults();
     } else {
-      return this.renderQuotes();
+      return this.renderPosts();
     }
-
   }
 };
 

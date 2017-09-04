@@ -34,31 +34,10 @@ class CommentList extends Component {
     const { postId, commentIdsArray } = this.props;
     const num = commentIdsArray.length;
     return (
-      <Accordion styled={false} activeIndex={this.state.activeIndex}
-        onTitleClick={this.handleTitleClick}
-      >
-        <Accordion.Title>
-          <a>
-            <Icon name='comment outline' />{num} Comments
-            { num > 0 ? <Icon name='dropdown' /> : null }
-          </a>
-          {/* <Icon name='comment outline' />{num} Comments */}
-        </Accordion.Title>
-        <Accordion.Content>
-          {
-            num <= 0
-            ? null
-            : <Comment.Group style={{ marginBottom: '10px'}}>
-              {
-                commentIdsArray.map(commentId => {
-                  return <CommentListItem key={commentId} id={commentId} />
-                })
-              }
-            </Comment.Group>
-          }
-          <CommentForm formType='new' id={postId} />
-        </Accordion.Content>
-      </Accordion>
+
+      commentIdsArray.map(commentId => {
+        return <CommentListItem key={commentId} id={commentId} />
+          })            
     );
   }
 
@@ -104,10 +83,6 @@ class CommentList extends Component {
 
     return (
       <div style={{ minHeight: '34px' }}>
-        <VisibilitySensor
-          active={commentIdsArray == null}
-          onChange={this.loadComments}
-        />
         {this.renderCommentBar()}
       </div>
     );

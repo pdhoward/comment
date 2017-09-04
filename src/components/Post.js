@@ -134,25 +134,12 @@ class Post extends Component {
   render() {
     const { post } = this.props;
     const { loading, error } = post || {};
+    console.log("ENTERED POSTJS")
+    console.log(this.props.post)
 
-    if (loading) {
-      return (
-        <Loader active inline='centered' />
-      );
-    } else if (error) {
-      return (
-        <Segment color='red' textAlign='center'>
-          <Icon name='warning sign' color='red' />
-          Failed to load the post
-        </Segment>
-      );
-    } else if (post != null) {
-      return this.renderPost();
-    } else {
-      return null;
-    }
-  }
-};
+  return this.renderPost();
+
+  };
 
 Post.propTypes = {
   id: PropTypes.string.isRequired,

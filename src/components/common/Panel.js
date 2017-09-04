@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Post                 from '../Post';
 //import API                  from "../../utils/API";
 
 class Panel extends Component {
@@ -30,7 +31,8 @@ class Panel extends Component {
               aria-hidden="true"
             />
             {this.props.quote.text}
-          </div>
+          </div>           
+
         </div>
       </div>
     );

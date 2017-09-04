@@ -45,6 +45,7 @@ const initialState = {
 // Action Creators
 /******************************************************************************/
 export const getAllPosts = () => {
+  console.log("ENTERED GETALLPOSTS")
   return (dispatch, getState) => {
     dispatch({ type: actions.PROMISE_GET_ALL });
     return getdbPosts()
@@ -168,12 +169,17 @@ const handlePromiseGetAll = (state, action) => {
   return { ...state, loading: true, error: null };
 };
 
+//// DEBUG
 const handleResolveGetAll = (state, action) => {
   const postsArray = action.posts || [];
   const posts = postsArray.reduce((obj, post) => {
     obj[post.id] = post;
+    console.log("HANDLE GET ALL POST STORE")
+    console.log(obj)
     return obj;
   }, {});
+  console.log("RETURN GET ALL POST STORE")
+  console.log(posts)
   return { ...state, posts, loading: false };
 };
 

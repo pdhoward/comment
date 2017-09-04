@@ -82,44 +82,21 @@ class CommentListItem extends Component {
   render() {
     const {
       id, thumb, author, timestamp, body, voteScore, isEditVisible
-    } = this.props;
+          } = this.props;
     const showDeleteConfirmation = id === this.props.delete.id;
 
     return (
-      <Comment key={id}>
-        { showDeleteConfirmation ? this.renderDeleteConfirmation() : null }
-        { isEditVisible ? this.renderEditForm() : null }
-        <Comment.Avatar src={thumb} />
-        <Comment.Content>
-          <Comment.Author style={{ display: 'inline' }}>
-            {author}
-          </Comment.Author>
-          <Comment.Metadata>
-            <div>{moment(timestamp).fromNow()}</div>
-            <div>
-              <Icon name='trophy' />
-              {voteScore}
-            </div>
-          </Comment.Metadata>
-          <Comment.Text>{body}</Comment.Text>
-          <Comment.Actions>
-            <VoteBox id={id} type={'comment'} />
-            <Comment.Action onClick={this.handleEdit}
-              style={{ marginLeft: '14px' }}
-            >
-              <Icon name='edit' />
-              Edit
-            </Comment.Action>
-            <Comment.Action onClick={this.handleDeleteIntent}>
-              <Icon name='trash outline' />
-              Delete
-            </Comment.Action>
-          </Comment.Actions>
-        </Comment.Content>
-        <Divider style={{ opacity: 0.5 }} />
-      </Comment>
-    );
-  }
+      <div>
+        <p>{id}</p>
+        <p>{author}</p>
+        <p>{timestamp}</p>
+        <p>{body}</p>
+        <p>{voteScore}</p>
+        <p>{isEditVisible}</p>
+      </div>
+
+      );
+    }
 };
 
 CommentListItem.propTypes = {
