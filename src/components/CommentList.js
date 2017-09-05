@@ -17,73 +17,25 @@ class CommentList extends Component {
     };
   }
 
-  handleTitleClick = () => {
-    this.setState((prevState, props) => {
-      return { activeIndex: prevState.activeIndex === -1 ? 0 : -1 };
-   });
-  }
-
-  loadComments = (isVisible) => {
-    // @see https://github.com/joshwnj/react-visibility-sensor
-    if (isVisible) {
-      this.props.dispatch(getCommentsForPost(this.props.postId));
-    }
-  }
 
   renderComments() {
+    console.log(">>>>>>>>>>>>HELLO FROM COMMENT LIST<<<<<<<<<<<<<<")
     const { postId, commentIdsArray } = this.props;
     const num = commentIdsArray.length;
     return (
 
       commentIdsArray.map(commentId => {
         return <CommentListItem key={commentId} id={commentId} />
-          })            
+          })
     );
-  }
-
-  renderLoading() {
-    return (
-      <div style={{ height: '34px', display: 'flex', alignItems: 'center' }}>
-        <Loader active inline size='mini'/>
-        <span style={{ marginLeft: '8px', fontSize: 12, opacity: 0.5 }}>
-          Loading comments...
-        </span>
-      </div>
-    )
-  }
-
-  renderError() {
-    return (
-      <div style={{ height: '34px', display: 'flex', alignItems: 'center' }}>
-        <Icon disabled name='warning sign' style={{ marginBottom: '4px' }} />
-        <span style={{ marginLeft: '8px', fontSize: 12, opacity: 0.5 }}>
-          Failed to load comments
-        </span>
-      </div>
-    );
-  }
-
-  renderCommentBar() {
-    const { commentIdsArray, commentsLoading, commentsLoadError } = this.props;
-    if (commentsLoading) {
-      return this.renderLoading();
-    }
-    else if (commentsLoadError) {
-      return this.renderError();
-    }
-    else if (Array.isArray(commentIdsArray)) {
-      return this.renderComments();
-    } else {
-      return null;
-    }
-  }
+  } 
 
   render() {
     const { commentIdsArray } = this.props;
 
     return (
       <div style={{ minHeight: '34px' }}>
-        {this.renderCommentBar()}
+        {this.renderComments()}
       </div>
     );
   }

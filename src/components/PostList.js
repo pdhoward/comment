@@ -59,10 +59,12 @@ class PostList extends Component {
     });
     console.log("and here are postcomponents")
     console.log(postComponents)
+
     return
       <Panel
         quote={postComponents}
       />
+
 
 
     /*
@@ -84,17 +86,7 @@ class PostList extends Component {
   render() {
     const { loading, error, posts } = this.props;
 
-
-
-    if (loading) {
-      return this.renderLoading();
-    } else if (error) {
-      return this.renderError();
-    } else if (_.isEmpty(posts)) {
-      return this.renderNoResults();
-    } else {
-      return this.renderQuotes();
-    }
+    return  this.renderQuotes();
 
   }
 };

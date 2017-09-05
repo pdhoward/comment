@@ -14,6 +14,8 @@ class Panel extends Component {
     //API.deleteQuote(id).then(this.props.getQuotes);
   }
   render() {
+    return (<div><p>"hello world"</p></div>)
+    {/*
     return (
       <div className="col-md-3 col-sm-6">
         <div className="panel panel-default">
@@ -31,11 +33,12 @@ class Panel extends Component {
               aria-hidden="true"
             />
             {this.props.quote.text}
-          </div>           
+          </div>
 
         </div>
       </div>
     );
+    */}
   }
 }
 

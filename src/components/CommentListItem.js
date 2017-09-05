@@ -13,71 +13,7 @@ import {
 import CommentForm            from './CommentForm';
 
 class CommentListItem extends Component {
-  handleEdit = () => {
-    const { id } = this.props;
-    this.props.dispatch(openEditForm(id));
-  }
 
-  handleDeleteIntent = () => {
-    const { dispatch, id } = this.props;
-    dispatch(intentDeleteComment(id));
-  }
-
-  handleConfirmDelete = () => {
-    const { dispatch, id } = this.props;
-    dispatch(confirmDeleteComment(id));
-  }
-
-  handleCancelDelete = () => {
-    const { dispatch } = this.props;
-    dispatch(cancelDeleteComment());
-  }
-
-  renderEditForm() {
-    const { id } = this.props;
-    return (
-      <Dimmer active inverted>
-        <CommentForm formType='edit' id={id} />
-      </Dimmer>
-    );
-  }
-
-  renderDeleteConfirmation() {
-    const { deleting, error } = this.props.delete;
-    if (deleting) {
-      return (
-        <Dimmer active><Loader /></Dimmer>
-      );
-    } else if (error) {
-      return (
-        <Dimmer active>
-          <div>
-            <Header size='tiny' inverted style={{ marginBottom: '8px'}}>
-              Something went wrong!
-            </Header>
-            <Button size='mini' onClick={this.handleCancelDelete}>Cancel</Button>
-            <Button size='mini' primary onClick={this.handleConfirmDelete}>
-              Retry
-            </Button>
-          </div>
-        </Dimmer>
-      );
-    } else {
-      return (
-        <Dimmer active>
-          <div>
-            <Header size='tiny' inverted style={{ marginBottom: '8px'}}>
-              Delete this comment ?
-            </Header>
-            <Button size='mini' onClick={this.handleCancelDelete}>Cancel</Button>
-            <Button size='mini' color='red' onClick={this.handleConfirmDelete}>
-              Confirm
-            </Button>
-          </div>
-        </Dimmer>
-      );
-    }
-  }
 
   render() {
     const {
@@ -87,12 +23,7 @@ class CommentListItem extends Component {
 
     return (
       <div>
-        <p>{id}</p>
-        <p>{author}</p>
-        <p>{timestamp}</p>
-        <p>{body}</p>
-        <p>{voteScore}</p>
-        <p>{isEditVisible}</p>
+        {"hello world"}
       </div>
 
       );
